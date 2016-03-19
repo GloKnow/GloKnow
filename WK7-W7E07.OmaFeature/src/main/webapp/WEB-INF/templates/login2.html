@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <!-- Author: W3layouts
+    Author URL: http://w3layouts.com
+    License: Creative Commons Attribution 3.0 Unported
+    License URL: http://creativecommons.org/licenses/by/3.0/ -->
+    <head>
+        <title>cyan Flat ui kit Website Template | Home :: w3layouts</title>
+        <link href="../../static/css/bootstrap.css" th:href="@{/static/css/bootstrap.css}" rel="stylesheet" type="text/css" />
+        <script src="../../static/js/jquery.min.js" th:src="@{/static/js/jquery.min.js}"></script>
+        <link href="../../static/css/style.css" th:href="@{/static/css/style.css}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="../../static/fonts/css/font-awesome.min.css" th:href="@{/static/fonts/css/font-awesome.min.css}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    </head>
+    <body>
+        <!-- container -->
+        <div class="container">
+
+            <div class="content">
+
+                <div class="3-cols">
+                    <div class="col-1 col-md-3">
+
+                        <!-- sign-in-box -->
+                        <div class="sign-in-box">
+                            <h2>Sign in</h2>
+                            <form method="POST" th:action="@{/authenticate}">
+                                <div class="text-boxs">
+                                    <span class="text-box">
+                                        <label class="s-user"></label>
+                                        <input type="text" name="username" placeholder="Username" />
+                                        <div class="clearfix"></div>
+                                    </span>
+                                    <span class="text-box">
+                                        <label class="s-lock"> </label>
+                                        <input type="text" name="password" placeholder="password" /> 
+                                        <div class="clearfix"> </div>
+                                    </span>
+                                </div>
+                                <input type="submit" value="sign in" />
+
+                                <p class="not-member">
+                                    <a class="member-sign" th:href="@{/signup}"> Not a member?</a> <a class="member-signup" th:href="@{/signup}">Sign Up Now <span> </span></a>
+                                </p>
+                            </form>
+
+                            <div class="copy-right">
+                                <p>Template by <a href="http://w3layouts.com/">w3layouts</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
