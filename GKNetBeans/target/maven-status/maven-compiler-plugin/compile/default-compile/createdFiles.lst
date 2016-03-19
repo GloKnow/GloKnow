@@ -1,2 +1,4 @@
+com\example\GoNowUserRepository.class
 com\example\DemoApplication.class
 com\example\GoNowUser.class
+com\example\GoNowUserController.class
