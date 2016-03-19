@@ -13,8 +13,11 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 @Entity
 public class Person extends AbstractPersistable<Long> {
 
-    private String name;
-    private String slogan;
+    private String firstname;
+    private String surname;
+    private String phone;
+    private String email;
+    private String birthday;
 
     @Column(unique = true)
     private String username;
@@ -31,22 +34,6 @@ public class Person extends AbstractPersistable<Long> {
 
     public Person() {
         this.lastUpdated = new Date();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSlogan() {
-        return slogan;
-    }
-
-    public void setSlogan(String slogan) {
-        this.slogan = slogan;
     }
 
     public String getUsername() {
@@ -96,6 +83,76 @@ public class Person extends AbstractPersistable<Long> {
 
     public void setImageId(Long imageId) {
         this.imageId = imageId;
+    }
+
+    /**
+     * @return the firstname
+     */
+    public String getFirstname() {
+        return firstname;
+    }
+
+    /**
+     * @param firstname the firstname to set
+     */
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    /**
+     * @return the surname
+     */
+    public String getSurname() {
+        return surname;
+    }
+
+    /**
+     * @param surname the surname to set
+     */
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    /**
+     * @return the phone
+     */
+    public String getPhone() {
+        return phone;
+    }
+
+    /**
+     * @param phone the phone to set
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return the birthday
+     */
+    public String getBirthday() {
+        return birthday;
+    }
+
+    /**
+     * @param birthday the birthday to set
+     */
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
 }

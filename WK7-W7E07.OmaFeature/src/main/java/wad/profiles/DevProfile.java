@@ -22,16 +22,22 @@ public class DevProfile {
     @PostConstruct
     public void init() {
         Person jackB = new Person();
-        jackB.setName("Jack Bauer");
-        jackB.setSlogan("I'm federal agent Jack Bauer. This is the longest day of my life.");
+        jackB.setFirstname("Jack");
+        jackB.setSurname("Bauer");
+        jackB.setBirthday("Today");
+        jackB.setEmail("asdasdasd@asd.asd");
+        jackB.setPhone("040-toolazy");
         jackB.setUsername("jackb");
         jackB.setPassword("jackb");
 
         jackB = personRepository.save(jackB);
 
         Person jackR = new Person();
-        jackR.setName("Jack Reacher");
-        jackR.setSlogan("I know I'm smarter than an armadillo.");
+        jackR.setFirstname("Jack");
+        jackR.setSurname("Reacher");
+        jackB.setBirthday("Today");
+        jackB.setEmail("asdasdasd@asd.asd");
+        jackB.setPhone("040-toolazy");
         jackR.setUsername("jackr");
         jackR.setPassword("jackr");
         jackR = personRepository.save(jackR);
