@@ -20,3 +20,15 @@ body {
 	width: 300px;
 	margin: auto
 }
+
+.TopBar {
+	display: flex;
+	width: 600px;
+}
+
+.TopBarItem {
+	background-color: #4CAF50;
+	padding: 15px 15px;
+	cursor: pointer;
+	border: 1px solid blue;
+}
