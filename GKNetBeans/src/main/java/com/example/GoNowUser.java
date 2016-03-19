@@ -4,11 +4,13 @@ package com.example;
 import javax.persistence.Entity;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 import java.util.Date;
+import javax.persistence.Id;
 import javax.persistence.Temporal;
 
 @Entity
 public class GoNowUser extends AbstractPersistable<Long> {
     
+    @Id
     private String firstName;
     private String lastName;
     private String phone;
