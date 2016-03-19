@@ -1,4 +1,4 @@
-package hello;
+package com.mycompany.mavenproject1;
 
 import java.util.Date;
 import javax.persistence.Entity;

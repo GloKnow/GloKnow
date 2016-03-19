@@ -1,5 +1,6 @@
-hello/Customer.class
-hello/Greeting.class
-hello/Application.class
-hello/CustomerRepository.class
-hello/GreetingController.class
+com\mycompany\mavenproject1\GoNowUserController.class
+com\mycompany\mavenproject1\GreetingController.class
+com\mycompany\mavenproject1\Application.class
+com\mycompany\mavenproject1\Greeting.class
+com\mycompany\mavenproject1\GoNowUser.class
+com\mycompany\mavenproject1\GoNowUserRepository.class
