@@ -1,3 +1,5 @@
-com\example\GoNowUserRepository.class
-com\example\GoNowUser.class
-com\example\GoNowUserController.class
+hello/Customer.class
+hello/Greeting.class
+hello/Application.class
+hello/CustomerRepository.class
+hello/GreetingController.class
