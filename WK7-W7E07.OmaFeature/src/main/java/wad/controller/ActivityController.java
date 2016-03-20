@@ -5,19 +5,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import wad.domain.Person;
-import wad.repository.PersonRepository;
+import wad.domain.Activity;
+import wad.repository.ActivityRepository;
 
 @Controller
-@RequestMapping("/persons")
+@RequestMapping("/activities")
 public class ActivityController {
 
     @Autowired
-    private PersonRepository personRepository;
+    private ActivityRepository activityRepository;
 
     @RequestMapping(method = RequestMethod.POST)
-    public String create(@ModelAttribute Person person) {
-        personRepository.save(person);
+    public String create(@ModelAttribute Activity activity) {
+        activityRepository.save(activity);
         return "redirect:/index";
     }
 }
