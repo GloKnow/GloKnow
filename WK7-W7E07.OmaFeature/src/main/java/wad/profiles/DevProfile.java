@@ -49,11 +49,27 @@ public class DevProfile {
         
         Activity footballAct = new Activity();
         footballAct.setName("Football");
-        footballAct.setTime("Tomorrow");
-        footballAct.setLocation("Behind you");
+        footballAct.setTime("2016-04-18 18:00");
+        footballAct.setLocation("Pallokatu 83, Helsinki");
         footballAct.setCreator(jackR);
-        footballAct.setDescription("We kick around an innocent ball.");
+        footballAct.setDescription("An epic sports event for the children and the childish alike. Everyone welcome!");
         footballAct = activityRepository.save(footballAct);
+        
+        Activity marathonAct = new Activity();
+        marathonAct.setName("Marathon");
+        marathonAct.setTime("2016-03-25 16:00");
+        marathonAct.setLocation("Talonpojan tie 4, Helsinki");
+        marathonAct.setCreator(jackR);
+        marathonAct.setDescription("Run Forrest, run! Sporty people wanted!");
+        marathonAct = activityRepository.save(marathonAct);
+        
+        Activity coffeeAct = new Activity();
+        coffeeAct.setName("Free coffee!");
+        coffeeAct.setTime("2016-03-28 16:00");
+        coffeeAct.setLocation("Kampinkatu 2 Helsinki");
+        coffeeAct.setCreator(jackB);
+        coffeeAct.setDescription("Coffee is served for everyone interested.");
+        coffeeAct = activityRepository.save(coffeeAct);
         
         Post post = new Post();
         post.setContent("Now they broke my toothbrush, I don't own anything.");
