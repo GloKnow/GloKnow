@@ -34,13 +34,23 @@ public class ActivityController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@ModelAttribute Activity activity, @RequestParam(required=false) String addme) {
-        System.out.println("Turns out the program didn't crash before getting here.");
         Person person = personService.getAuthenticatedPerson();
         activity.setCreator(person);
         if (addme != null) activity.addAttendee(person);
         activityRepository.save(activity);
         person.getOwnedActivities().add(activity);
         return "redirect:/activities";
+    }
+    
+    @RequestMapping(value = "/remove/{activityId}", method = RequestMethod.POST)
+    public String remove(@PathVariable Long activityId)
+    {
+        Activity activity = activityRepository.findOne(activityId);
+        Person currUser = personService.getAuthenticatedPerson();
+        Person creator = activity.getCreator();
+        if (currUser == creator) activityRepository.delete(activity);
+        return "redirect:/activities";
+        
     }
     
     @RequestMapping(value = "/create", method = RequestMethod.GET)
