@@ -79,6 +79,6 @@ public class DefaultController {
             model.addAttribute("friendshipRequests", requests);
         }
 
-        return "index";
+        return "activities";
     }
 }

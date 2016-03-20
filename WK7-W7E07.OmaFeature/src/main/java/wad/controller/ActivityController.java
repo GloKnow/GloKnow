@@ -27,7 +27,7 @@ public class ActivityController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(@ModelAttribute Activity activity) {
         activityRepository.save(activity);
-        return "redirect:/index";
+        return "redirect:/activities";
     }
     
     @RequestMapping(value = "/create", method = RequestMethod.GET)

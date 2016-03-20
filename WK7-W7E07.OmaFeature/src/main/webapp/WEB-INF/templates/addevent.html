@@ -8,7 +8,7 @@
 <body background="./boardbg.jpg"><div id="wrapper">
 <div class="content">
 <header>
-<a href="index.html"><img src="../../static/images/globe_pic_logo2.png" id="gn_logo"></a>
+<a href="index.html"><img alt="" src="../../static/images/globe_pic_logo2.png" id="gn_logo" /></a>
 <div class="top_text">GoNow<br />Basic User</div>
 
     <a href="" class="logout">Log Out</a>
@@ -26,26 +26,29 @@
    
    <div class="activity">
 
-
+    <div class="event">
        <form method="POST" th:action="@{/activities/create}">
-        <div class="event">
-Add name:<input form="textarea" width="70" maxlength="20"></input>
-		</div>
-        <div class="event">
-<span style="float: left;">Add description: </span>
-<textarea cols="40" rows="5" name="myname"></textarea></input>
-		</div>
-		<div class="event">
-			Add picture:
-		<form action="upload.php" method="post" enctype="multipart/form-data">
-    Select image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-</form></event>
-
-<button type="post">Create event</button>
+            Add name:<input type="text" name="name"></input>
+        <span style="float: left;">Add description: </span>
+        <input type="text" name="description"></input>
+        <span style="float: left;">Add time: </span>
+        <input type="text" name="time"></input>
+        <span style="float: left;">Add location: </span>
+        <input type="text" name="location"></input>
+        <input type="submit" value="Create event!" />
        </form>
+    </div>
+       
+       	<div class="event">
+	    Add picture:
+	    <form action="upload.php" method="post" enctype="multipart/form-data">
+                Select image to upload:
+                <input type="file" name="fileToUpload" id="fileToUpload" />
+                <input type="submit" value="Upload Image" name="submit" />
+            </form>
+        </div>
 	
+</div>
 </div>
 </div>
 </div>
