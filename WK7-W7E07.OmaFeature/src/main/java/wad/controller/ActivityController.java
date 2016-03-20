@@ -1,6 +1,7 @@
 package wad.controller;
 
 import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,12 +45,16 @@ public class ActivityController {
         return "addevent";
     }
     
+    @Transactional
     @RequestMapping(value = "/{activityId}", method = RequestMethod.POST)
     public String joinActivity(@PathVariable Long activityId) {
         Person person = personService.getAuthenticatedPerson();
         Activity activity = activityRepository.findOne(activityId);
-        person.getAttendedActivities().add(activity);
-        activity.getAttendees().add(person);
-        return "reditect:/activities";
+        List<Person> attendeelist = activity.getAttendees();
+        if (!attendeelist.contains(person)) {
+            person.getAttendedActivities().add(activity);
+            activity.getAttendees().add(person);
+        }
+        return "redirect:/activities";
     }
 }
