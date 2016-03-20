@@ -32,12 +32,28 @@ public class Person extends AbstractPersistable<Long> {
     private List<Post> posts;
     
     @OneToMany(mappedBy = "creator", fetch = FetchType.LAZY)
-    private List<Activity> activities;
+    private List<Activity> ownedActivities;
     
     @ManyToMany(mappedBy = "attendees", fetch = FetchType.LAZY)
     private List<Activity> attendedActivities;
     
     private Long imageId;
+
+    public List<Activity> getOwnedActivities() {
+        return ownedActivities;
+    }
+
+    public void setOwnedActivities(List<Activity> ownedActivities) {
+        this.ownedActivities = ownedActivities;
+    }
+
+    public List<Activity> getAttendedActivities() {
+        return attendedActivities;
+    }
+
+    public void setAttendedActivities(List<Activity> attendedActivities) {
+        this.attendedActivities = attendedActivities;
+    }
 
     public Person() {
         this.lastUpdated = new Date();
