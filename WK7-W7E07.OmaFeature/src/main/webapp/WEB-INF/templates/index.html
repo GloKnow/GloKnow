@@ -28,13 +28,15 @@
 
 <div class="activities">
    
-   <div class="activity">
+   <div class="activity" th:each="act : ${activities}">
         <button type="button" onclick="location.href='addevent.html';">Add me!</button>
         <table border="1" style="width:100%">
             <tr>
-                <td>Activity A</td>
-                <td>???</td>
-                <td>???</td>
+                <td th:text="${act.name}">Name</td>
+                <td th:text="${act.time}">Time</td>
+                <td th:text="${act.location}">Location</td>
+                <td th:text="${act.creator}">Creator</td>
+                <td th:text="{act.description}">Description</td>
             </tr>
         </table>
         Description
