@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import wad.domain.Activity;
@@ -41,5 +42,14 @@ public class ActivityController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String displayCreate() {
         return "addevent";
+    }
+    
+    @RequestMapping(value = "/{activityId}", method = RequestMethod.POST)
+    public String joinActivity(@PathVariable Long activityId) {
+        Person person = personService.getAuthenticatedPerson();
+        Activity activity = activityRepository.findOne(activityId);
+        person.getAttendedActivities().add(activity);
+        activity.getAttendees().add(person);
+        return "reditect:/activities";
     }
 }
