@@ -49,6 +49,11 @@ public class DefaultController {
     public String viewSignup(Model model) {
         return "signup";
     }
+    
+    @RequestMapping(value = "settings", method = RequestMethod.GET)
+    public String viewSettings(Model model) {
+        return "settings";
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public String view(Model model) {

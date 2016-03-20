@@ -5,10 +5,10 @@
 <link href="../../static/css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body background="../../static/images/boardbg.jpg"><div id="wrapper">
+<body background="../../static/images/123.jpg"><div id="wrapper">
 <div class="content">
 <header>
-    <a href="indexold.html"><img alt="" src="../../static/images/globe_pic_logo2.png" id="gn_logo" /></a>
+    <a href="index.html"><img alt="" src="../../static/images/globe_pic_logo2.png" id="gn_logo" /></a>
     <div class="top_text">GoNow<br />Basic User</div>
 
     <a href="#" onclick="document.getElementById('logout-form').submit()" class="logout">Log Out</a>
@@ -18,32 +18,34 @@
 </header>
 
 <nav class="topBar"> 
-  <a href="indexold.html" class="topbarItem">Activites</a>
-  <a href="profileold.html" class="topbarItem">Profile</a>
-  <a href="/js/" class="topbarItem">Settings</a>
-  <a href="/jquery/" class="topbarItem">???</a>
-  <a href="/jquery/" class="topbarItem">???</a>
+  <a href="index.html" class="topbarItem">Activities</a>
+  <a href="profile.html" class="topbarItem">Profile</a>
+  <a href="settings.html" class="topbarItem" th:href="@{/settings}">Settings</a>
+  <a href="/jquery/" class="topbarItem">---</a>
+  <a href="/jquery/" class="topbarItem">---</a>
 </nav>
 
 
 <div class="activities">
-    
-    <a class="button" href="#" th:href="@{/activities/create}">Propose new activity</a>
+    <a class="button3" href="#" th:href="@{/activities/create}">Propose new activity</a>
    
    <div class="activity" th:each="act : ${activities}">
         <!--button type="button" onclick="location.href='addevent.html';">Add me!</button-->
-        <form method="POST" th:action="@{/activities/{id}(id=${act.id})}"><input type="submit" class="button2" value="Join!" /></form>
-        <form method="POST" th:action="@{/activities/remove/{id}(id=${act.id})}"><input type="submit" class="button3" value="Remove" /></form>
-        <table border="1" style="width:100%">
+
+        <div class="group"><table border="1" style="width:100%">
             <tr>
                 <td th:text="${act.name}">Name</td>
                 <td th:text="${act.time}">Time</td>
                 <td th:text="${act.location}">Location</td>
+                <!--td th:text="${act.creator.username}">Creator</td-->
                 <td><a th:text="${act.creator.username}" href="#" th:href="@{/profiles/{name} (name=${act.creator.username})}">Creator</a></td>
                 <td th:text="${act.attendeeCount}">Attendees</td>
             </tr>
         </table>
-        <p th:text="${act.description}"> Description</p>
+					        <p th:text="${act.description}"> Description</p></div>
+		        <form method="POST" th:action="@{/activities/{id}(id=${act.id})}"><input type="submit" class="button3" value="Join!" /></form>
+				<!--form method="POST" th:href="@{/activities/create}"><input type="submit" class="button3" value="Propose new activity" /></form-->
+
     </div>
         
 </div>
