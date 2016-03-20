@@ -37,26 +37,12 @@
                 <td th:text="${act.time}">Time</td>
                 <td th:text="${act.location}">Location</td>
                 <td th:text="${act.creator.username}">Creator</td>
-                <td th:text="${act.description}">Description</td>
                 <td th:text="${act.attendeeCount}">Attendees</td>
             </tr>
         </table>
-        Description
+        <p th:text="${act.description}"> Description</p>
     </div>
         
-		
-    <div class="activity">
-        <button type="button">Add me!</button>
-        <table border="1" style="width:100%">
-            <tr>
-                <td>Activity B</td>
-                <td>???</td>		
-                <td>???</td>
-            </tr>
-        </table>
-        Description
-    </div>
-	
 </div>
 </div>
 </div>
