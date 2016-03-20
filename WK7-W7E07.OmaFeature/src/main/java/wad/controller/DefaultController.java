@@ -52,33 +52,33 @@ public class DefaultController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String view(Model model) {
-        PageRequest pr = new PageRequest(0, 10, Sort.Direction.DESC, "date");
+//        PageRequest pr = new PageRequest(0, 10, Sort.Direction.DESC, "date");
+//
+//        Person self = personService.getAuthenticatedPerson();
+//        model.addAttribute("self", self);
+//
+//        List<FriendshipRequest> friends = friendshipRequestRepository.findBySourceOrTargetAndStatus(self, self, Status.ACCEPTED);
+//        Set<Person> persons = new HashSet<>();
+//        for (FriendshipRequest friend : friends) {
+//            persons.add(friend.getSource());
+//            persons.add(friend.getTarget());
+//        }
+//
+//        if (!persons.isEmpty()) {
+//            List<Post> posts = postRepository.findByAuthorIn(persons, pr);
+//            model.addAttribute("posts", posts);
+//        }
+//
+//        pr = new PageRequest(0, 10, Sort.Direction.DESC, "lastUpdated");
+//        List<Person> userList = new ArrayList<>(personRepository.findAll(pr).getContent());
+//        userList.remove(self);
+//        model.addAttribute("users", userList);
+//
+//        List<FriendshipRequest> requests = friendshipRequestRepository.findByTargetAndStatus(self, Status.REQUESTED);
+//        if (requests != null && requests.size() > 0) {
+//            model.addAttribute("friendshipRequests", requests);
+//        }
 
-        Person self = personService.getAuthenticatedPerson();
-        model.addAttribute("self", self);
-
-        List<FriendshipRequest> friends = friendshipRequestRepository.findBySourceOrTargetAndStatus(self, self, Status.ACCEPTED);
-        Set<Person> persons = new HashSet<>();
-        for (FriendshipRequest friend : friends) {
-            persons.add(friend.getSource());
-            persons.add(friend.getTarget());
-        }
-
-        if (!persons.isEmpty()) {
-            List<Post> posts = postRepository.findByAuthorIn(persons, pr);
-            model.addAttribute("posts", posts);
-        }
-
-        pr = new PageRequest(0, 10, Sort.Direction.DESC, "lastUpdated");
-        List<Person> userList = new ArrayList<>(personRepository.findAll(pr).getContent());
-        userList.remove(self);
-        model.addAttribute("users", userList);
-
-        List<FriendshipRequest> requests = friendshipRequestRepository.findByTargetAndStatus(self, Status.REQUESTED);
-        if (requests != null && requests.size() > 0) {
-            model.addAttribute("friendshipRequests", requests);
-        }
-
-        return "activities";
+        return "redirect:/activities";
     }
 }
