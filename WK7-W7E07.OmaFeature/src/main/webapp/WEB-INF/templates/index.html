@@ -38,7 +38,7 @@
                 <td th:text="${act.name}">Name</td>
                 <td th:text="${act.time}">Time</td>
                 <td th:text="${act.location}">Location</td>
-                <td th:text="${act.creator.username}">Creator</td>
+                <td><a th:text="${act.creator.username}" href="#" th:href="@{/profiles/{name} (name=${act.creator.username})}">Creator</a></td>
                 <td th:text="${act.attendeeCount}">Attendees</td>
             </tr>
         </table>

@@ -30,9 +30,15 @@ public class ProfileController {
     @Autowired
     private FileObjectRepository fileRepository;
     
-    @RequestMapping(value = "/{personId}", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/{personId}", method = RequestMethod.GET)
     public String viewProfile(@PathVariable Long personId, Model model) {
         model.addAttribute("profile", personRepository.findOne(personId));
+        return "profile";
+    }*/
+    
+    @RequestMapping(value = "/{username}", method = RequestMethod.GET)
+    public String viewProfile(@PathVariable String username, Model model) {
+        model.addAttribute("profile", personRepository.findByUsername(username));
         return "profile";
     }
     

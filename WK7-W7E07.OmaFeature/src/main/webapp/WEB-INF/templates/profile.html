@@ -41,7 +41,7 @@
                     </nav>
                 </div>
                 <div class="logo">
-                    <span th:text="${profile.name}">Zach Dunes </span>
+                    <span th:text="${profile.username}">Zach Dunes </span>
                 </div>
                 <!-- usernotifications -->
                 <div class="usernotifications">
@@ -70,8 +70,8 @@
                         <div>
                             <div class="user-profile1 text-center">
                                 <img src="../../static/images/people.png" th:src="@{/static/images/people.png}" title="name" />
-                                <h3 th:text="${profile.name}">Zach Dunes</h3>
-                                <p th:text="${profile.slogan}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus dui id libero auctor cursus. </p>
+                                <h3 th:text="${profile.username}">Zach Dunes</h3>
+                                <!--p th:text="${profile.slogan}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus dui id libero auctor cursus. </p-->
                                 <!--form method="POST">
                                     <input type="hidden" name="personId" th:value="${request.source.id}"/>
                                     <input type="submit" class="p-btn" value="Ok! I like 'im!"/>
