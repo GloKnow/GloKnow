@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import wad.domain.Activity;
 import wad.domain.Person;
 import wad.repository.ActivityRepository;
@@ -31,9 +32,11 @@ public class ActivityController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(@ModelAttribute Activity activity) {
+    public String create(@ModelAttribute Activity activity, @RequestParam(required=false) String addme) {
+        System.out.println("Turns out the program didn't crash before getting here.");
         Person person = personService.getAuthenticatedPerson();
         activity.setCreator(person);
+        if (addme != null) activity.addAttendee(person);
         activityRepository.save(activity);
         person.getOwnedActivities().add(activity);
         return "redirect:/activities";

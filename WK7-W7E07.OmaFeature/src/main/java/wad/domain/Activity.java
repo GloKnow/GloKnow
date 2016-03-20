@@ -37,6 +37,7 @@ public class Activity extends AbstractPersistable<Long> {
 
     public Activity() {
         this.lastUpdated = new Date();
+        this.attendees = new ArrayList();
     }
 
     /**
