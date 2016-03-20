@@ -45,6 +45,13 @@ public class Activity extends AbstractPersistable<Long> {
     public List<Person> getAttendees() {
         return attendees;
     }
+    
+    /**
+     * @return the amount of attendees
+     */
+    public int getAttendeeCount() {
+        return attendees.size();
+    }
 
     /**
      * @param attendees the attendees to set
