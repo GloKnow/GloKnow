@@ -3,9 +3,12 @@ package wad.domain;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -14,9 +17,13 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 @Entity
 public class Activity extends AbstractPersistable<Long> {
 
-    private ArrayList<Person> attendees;
+    @ManyToOne(fetch = FetchType.LAZY)
     private Person creator;
+
     private String description;
+    
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Person> attendees;
 
     @Column(unique = true)
     private String name;
@@ -35,14 +42,14 @@ public class Activity extends AbstractPersistable<Long> {
     /**
      * @return the attendees
      */
-    public ArrayList<Person> getAttendees() {
+    public List<Person> getAttendees() {
         return attendees;
     }
 
     /**
      * @param attendees the attendees to set
      */
-    public void setAttendees(ArrayList<Person> attendees) {
+    public void setAttendees(List<Person> attendees) {
         this.attendees = attendees;
     }
     
