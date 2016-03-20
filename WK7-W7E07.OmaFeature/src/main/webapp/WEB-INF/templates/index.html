@@ -33,6 +33,7 @@
    <div class="activity" th:each="act : ${activities}">
         <!--button type="button" onclick="location.href='addevent.html';">Add me!</button-->
         <form method="POST" th:action="@{/activities/{id}(id=${act.id})}"><input type="submit" class="button2" value="Join!" /></form>
+        <form method="POST" th:action="@{/activities/remove/{id}(id=${act.id})}"><input type="submit" class="button3" value="Remove" /></form>
         <table border="1" style="width:100%">
             <tr>
                 <td th:text="${act.name}">Name</td>
