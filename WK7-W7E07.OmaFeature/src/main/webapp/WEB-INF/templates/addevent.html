@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>GloKnow</title>
-<link href="./css/styles.css" rel="stylesheet" type="text/css">
+<link href="../../static/css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body background="./boardbg.jpg"><div id="wrapper">
 <div class="content">
 <header>
-<a href="index.html"><img src="./globe_pic_logo2.png" id="gn_logo"></a>
+<a href="index.html"><img src="../../static/images/globe_pic_logo2.png" id="gn_logo"></a>
 <div class="top_text">GoNow<br />Basic User</div>
 
     <a href="" class="logout">Log Out</a>
@@ -27,8 +27,9 @@
    <div class="activity">
 
 
+       <form method="POST" th:action="@{/activities/create}">
         <div class="event">
-Add description:<input form="textarea" width="70" maxlength="20"></input>
+Add name:<input form="textarea" width="70" maxlength="20"></input>
 		</div>
         <div class="event">
 <span style="float: left;">Add description: </span>
@@ -43,7 +44,7 @@ Add description:<input form="textarea" width="70" maxlength="20"></input>
 </form></event>
 
 <button type="post">Create event</button>
-
+       </form>
 	
 </div>
 </div>
