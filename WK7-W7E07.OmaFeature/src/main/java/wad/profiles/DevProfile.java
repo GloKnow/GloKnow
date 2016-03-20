@@ -40,9 +40,9 @@ public class DevProfile {
         Person jackR = new Person();
         jackR.setFirstname("Jack");
         jackR.setSurname("Reacher");
-        jackB.setBirthday("Today");
-        jackB.setEmail("asdasdasd@asd.asd");
-        jackB.setPhone("040-toolazy");
+        jackR.setBirthday("Today");
+        jackR.setEmail("asdasdasd@asd.asd");
+        jackR.setPhone("040-toolazy");
         jackR.setUsername("jackr");
         jackR.setPassword("jackr");
         jackR = personRepository.save(jackR);
