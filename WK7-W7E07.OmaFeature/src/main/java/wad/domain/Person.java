@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -29,6 +30,12 @@ public class Person extends AbstractPersistable<Long> {
 
     @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
     private List<Post> posts;
+    
+    @OneToMany(mappedBy = "creator", fetch = FetchType.LAZY)
+    private List<Activity> activities;
+    
+    @ManyToMany(mappedBy = "attendees", fetch = FetchType.LAZY)
+    private List<Activity> attendedActivities;
     
     private Long imageId;
 

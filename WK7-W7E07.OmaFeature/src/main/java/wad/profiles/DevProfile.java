@@ -4,8 +4,10 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import wad.domain.Activity;
 import wad.domain.Person;
 import wad.domain.Post;
+import wad.repository.ActivityRepository;
 import wad.repository.PersonRepository;
 import wad.repository.PostRepository;
 
@@ -18,6 +20,9 @@ public class DevProfile {
 
     @Autowired
     private PostRepository postRepository;
+    
+    @Autowired
+    private ActivityRepository activityRepository;
 
     @PostConstruct
     public void init() {
@@ -42,6 +47,13 @@ public class DevProfile {
         jackR.setPassword("jackr");
         jackR = personRepository.save(jackR);
         
+        Activity footballAct = new Activity();
+        footballAct.setName("Football");
+        footballAct.setTime("Tomorrow");
+        footballAct.setLocation("Behind you");
+        footballAct.setCreator(jackR);
+        footballAct.setDescription("We kick around an innocent ball.");
+        footballAct = activityRepository.save(footballAct);
         
         Post post = new Post();
         post.setContent("Now they broke my toothbrush, I don't own anything.");
