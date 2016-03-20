@@ -48,8 +48,25 @@ public class ActivityController {
         Activity activity = activityRepository.findOne(activityId);
         Person currUser = personService.getAuthenticatedPerson();
         Person creator = activity.getCreator();
-        if (currUser == creator) activityRepository.delete(activity);
+        if (currUser == creator) {
+            List<Person> attendeelist = activity.getAttendees();
+            for(Person attendee : attendeelist)
+            {
+                this.leave(attendee,activity);
+            }
+            activityRepository.delete(activity);
+        }
         return "redirect:/activities";
+        
+    }
+    
+    private void leave(Person person, Activity activity)
+    {
+        List<Person> attendeelist = activity.getAttendees();
+        if (attendeelist.contains(person)) {
+            person.getAttendedActivities().remove(activity);
+            activity.getAttendees().remove(person);
+        }
         
     }
     
