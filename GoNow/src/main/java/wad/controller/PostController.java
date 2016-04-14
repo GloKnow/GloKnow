@@ -27,6 +27,6 @@ public class PostController {
         post = postRepository.save(post);
         person.getPosts().add(post);
         
-        return "redirect:/index";
+        return "redirect:/activities";
     }
 }

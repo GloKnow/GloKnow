@@ -25,6 +25,11 @@
   <a href="/jquery/" class="topbarItem">---</a>
 </nav>
 
+<div>
+    <div th:each="post : ${posts}">
+        <p th:text="${post.content}">Text</p>
+    </div>
+</div>
 
 <div class="activities">
     <a class="button3" href="#" th:href="@{/activities/create}">Propose new activity</a>

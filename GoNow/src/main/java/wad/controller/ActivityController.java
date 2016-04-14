@@ -12,13 +12,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import wad.domain.Activity;
 import wad.domain.Person;
+import wad.domain.Post;
 import wad.repository.ActivityRepository;
+import wad.repository.PostRepository;
 import wad.service.PersonService;
 
 @Controller
 @RequestMapping("/activities")
 public class ActivityController {
 
+    @Autowired
+    private PostRepository postRepository;
+    
     @Autowired
     private ActivityRepository activityRepository;
     
@@ -27,6 +32,9 @@ public class ActivityController {
     
     @RequestMapping(method = RequestMethod.GET)
     public String list(Model model) {
+        List<Post> posts = postRepository.findAll();
+        model.addAttribute("posts", posts);
+        
         List<Activity> activities = activityRepository.findAll();
         model.addAttribute("activities", activities);
         return "index";

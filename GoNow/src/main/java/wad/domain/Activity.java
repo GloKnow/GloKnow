@@ -15,7 +15,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 @Entity
-public class Activity extends AbstractPersistable<Long> {
+public class Activity extends UUIDPersistable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Person creator;
