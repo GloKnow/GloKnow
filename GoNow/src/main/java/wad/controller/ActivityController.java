@@ -50,8 +50,9 @@ public class ActivityController {
         Person creator = activity.getCreator();
         if (currUser == creator) {
             List<Person> attendeelist = activity.getAttendees();
-            for(Person attendee : attendeelist)
+            while(!attendeelist.isEmpty())
             {
+                Person attendee = attendeelist.get(0);
                 this.leave(attendee,activity);
             }
             activityRepository.delete(activity);
