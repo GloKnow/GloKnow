@@ -51,7 +51,7 @@ public class ActivityController {
     }
     
     @RequestMapping(value = "/remove/{activityId}", method = RequestMethod.POST)
-    public String remove(@PathVariable Long activityId)
+    public String remove(@PathVariable String activityId)
     {
         Activity activity = activityRepository.findOne(activityId);
         Person currUser = personService.getAuthenticatedPerson();
@@ -85,7 +85,7 @@ public class ActivityController {
     
     @Transactional
     @RequestMapping(value = "/{activityId}", method = RequestMethod.POST)
-    public String joinActivity(@PathVariable Long activityId) {
+    public String joinActivity(@PathVariable String activityId) {
         Person person = personService.getAuthenticatedPerson();
         Activity activity = activityRepository.findOne(activityId);
         List<Person> attendeelist = activity.getAttendees();
