@@ -88,4 +88,11 @@ public class ActivityController {
         }
         return "redirect:/activities";
     }
+
+    /**
+     * @param personService the personService to set
+     */
+    public void setPersonService(PersonService personService) {
+        this.personService = personService;
+    }
 }
