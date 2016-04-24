@@ -58,8 +58,9 @@ public class ActivityController {
         Person creator = activity.getCreator();
         if (currUser == creator) {
             List<Person> attendeelist = activity.getAttendees();
-            for(Person attendee : attendeelist)
+            while(!attendeelist.isEmpty())
             {
+                Person attendee = attendeelist.get(0);
                 this.leave(attendee,activity);
             }
             activityRepository.delete(activity);
@@ -94,5 +95,13 @@ public class ActivityController {
             activity.getAttendees().add(person);
         }
         return "redirect:/activities";
+    }
+
+    /**
+     * @param personService the personService to set
+     * For Mockito testing. Cannot seem to inject a mock personService otherwise.
+     */
+    public void setPersonService(PersonService personService) {
+        this.personService = personService;
     }
 }

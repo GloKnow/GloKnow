@@ -39,6 +39,24 @@ public class Person extends AbstractPersistable<Long> {
     
     private Long imageId;
 
+    public boolean equals(Object obj)
+    {
+        if(obj == null)
+        {
+            return false;
+        }
+        try 
+        {
+            Person other = (Person)obj;
+            return (other.getId() == this.getId());
+        }
+        catch(Exception e)
+        {
+            return false;
+        }
+        
+    }
+    
     public List<Activity> getOwnedActivities() {
         return ownedActivities;
     }
