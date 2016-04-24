@@ -86,6 +86,15 @@ public class ActivityControllerTest {
     
     @Test
     @Transactional
+    public void othersCanJoin()
+    {
+        Activity football = activityRepository.findByName("Football");
+        Person jackb = personRepository.findByUsername("jackb");
+        canJoin(football,jackb);
+    }
+    
+    @Test
+    @Transactional
     public void testTansactionGetsRolledBack()
     {
         Activity football = activityRepository.findByName("Football");
