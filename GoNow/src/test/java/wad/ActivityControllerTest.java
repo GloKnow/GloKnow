@@ -141,6 +141,85 @@ public class ActivityControllerTest {
         assertEquals(activity,activityFromRepo);
     }
     
+    @Test
+    @Transactional
+    public void nonOwnerCannotRemove()
+    {
+        Person jackb = personRepository.findByUsername("jackb");
+        Activity activity = createWhileJoining();
+        when(personServiceMock.getAuthenticatedPerson()).thenReturn(jackb);
+        remove(activity);
+        checkNotRemoved(activity);
+    }
+    
+    @Test
+    @Transactional
+    public void ownerCanRemoveEmpty()
+    {
+        Activity activity = createWithoutJoining();
+        when(personServiceMock.getAuthenticatedPerson()).thenReturn(jackr);
+        remove(activity);
+        checkIfRemoved(activity);
+    }
+    
+    @Test
+    @Transactional
+    public void ownerCanRemoveSelfJoined()
+    {
+        Activity activity = createWhileJoining();
+        when(personServiceMock.getAuthenticatedPerson()).thenReturn(jackr);
+        remove(activity);
+        checkIfRemoved(activity);
+    }
+    
+    @Test
+    @Transactional
+    public void ownerCanRemoveWithOthersJoined()
+    {
+        Activity activity = createWithoutJoining();
+        Person jackb = personRepository.findByUsername("jackb");
+        join(jackb, activity);
+        when(personServiceMock.getAuthenticatedPerson()).thenReturn(jackr);
+        remove(activity);
+        checkIfRemoved(activity);
+    }
+    
+    @Test
+    @Transactional
+    public void ownerCanRemoveWithOthersAndSelfJoined()
+    {
+        Activity activity = createWhileJoining();
+        Person jackb = personRepository.findByUsername("jackb");
+        join(jackb, activity);
+        when(personServiceMock.getAuthenticatedPerson()).thenReturn(jackr);
+        remove(activity);
+        checkIfRemoved(activity);
+    }
+    
+    private void checkNotRemoved(Activity activity)
+    {
+        String activityName = activity.getName();
+        assertNotEquals(0,activity.getAttendeeCount());
+        //assertNotNull(activity.getCreator()); //Creator isn't currently removed before the event is - uncomment if that changes!
+        Activity repoActivity = activityRepository.findByName(activityName);
+        assertEquals(activity, repoActivity);
+    }
+    
+    private void checkIfRemoved(Activity activity)
+    {
+        String activityName = activity.getName();
+        assertEquals(0,activity.getAttendeeCount());
+        //assertNull(activity.getCreator()); //Creator isn't currently removed before the event is - uncomment if that changes!
+        Activity repoActivity = activityRepository.findByName(activityName);
+        assertNotEquals(activity, repoActivity);
+    }
+    
+    private void remove(Activity activity)
+    {
+        Long activityID = activity.getId();
+        activityController.remove(activityID);
+    }
+    
     private Activity createWhileJoining()
     {
         String activityName = "joined";
