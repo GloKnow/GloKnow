@@ -31,6 +31,7 @@ import wad.repository.PersonRepository;
 import wad.service.PersonService;
 
 //TODO: Figure out how to get this running using a separate test profile
+//DisplayCreate and activity listing currently untested.
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @TransactionConfiguration(defaultRollback=true)
@@ -73,11 +74,7 @@ public class ActivityControllerTest {
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+
     @Test
     @Transactional
     public void creatorCanJoin()
