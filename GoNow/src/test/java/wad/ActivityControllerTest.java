@@ -81,7 +81,7 @@ public class ActivityControllerTest {
     {
         Activity football = activityRepository.findByName("Football");
         Person jackr = personRepository.findByUsername("jackr");
-        canJoin(football,jackr);
+        canJoin(jackr,football);
     }
     
     @Test
@@ -90,7 +90,7 @@ public class ActivityControllerTest {
     {
         Activity football = activityRepository.findByName("Football");
         Person jackb = personRepository.findByUsername("jackb");
-        canJoin(football,jackb);
+        canJoin(jackb,football);
     }
     
     @Test
@@ -102,15 +102,29 @@ public class ActivityControllerTest {
         assertEquals(0,attendees);
     }
     
-    public void canJoin(Activity activity, Person person)
+    public void canJoin(Person person, Activity activity)
     {
+
+
+        int attendeesOld = activity.getAttendeeCount();
+        join(person, activity);
+        int attendees = activity.getAttendeeCount();
+        assertEquals(attendeesOld+1,attendees);
+    }
+    
+    public void cannotJoin(Person person, Activity activity)
+    {
+        int attendeesOld = activity.getAttendeeCount();
+        join(person, activity);
+        int attendees = activity.getAttendeeCount();
+        assertEquals(attendeesOld,attendees);
+    }
+
+    private void join(Person person, Activity activity) {
         //Mock behavior
         when(personServiceMock.getAuthenticatedPerson()).thenReturn(person);
         
         Long activityID = activity.getId();
-        int attendeesOld = activity.getAttendeeCount();
         activityController.joinActivity(activityID);
-        int attendees = activity.getAttendeeCount();
-        assertEquals(attendeesOld+1,attendees);         
     }
 }
