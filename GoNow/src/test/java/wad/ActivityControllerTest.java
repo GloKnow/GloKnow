@@ -42,16 +42,15 @@ public class ActivityControllerTest {
 
     @InjectMocks
     @Autowired
-    ActivityController activityController;
+    private ActivityController activityController;
     
     @Autowired
-    ActivityRepository activityRepository;
+    private ActivityRepository activityRepository;
     
     @Autowired
-    PersonRepository personRepository;
+    private PersonRepository personRepository;
     
-    private Activity activity;
-    Person jackr;
+    private Person jackr;
     
     public ActivityControllerTest() {
     }
@@ -110,7 +109,7 @@ public class ActivityControllerTest {
     @Transactional
     public void createdActivityCreatorSetCorrectly()
     {
-        activity = this.createWhileJoining();
+        Activity activity = this.createWhileJoining();
         assertEquals(jackr, activity.getCreator());
     }
     
@@ -118,7 +117,7 @@ public class ActivityControllerTest {
     @Transactional
     public void canJoinWhenCreating()
     {
-        activity = this.createWhileJoining();
+        Activity activity = this.createWhileJoining();
         //This currently fails - we have a list of attended activities, but we never add anything there!
         //assertTrue(jackr.getAttendedActivities().contains(joinedCreatedActivity));
         assertTrue(activity.getAttendees().contains(jackr));
@@ -128,7 +127,7 @@ public class ActivityControllerTest {
     @Transactional
     public void canNotJoinWhenCreating()
     {
-        activity = this.createWithoutJoining();
+        Activity activity = this.createWithoutJoining();
         assertFalse(activity.getAttendees().contains(jackr));
     }
     
@@ -136,7 +135,7 @@ public class ActivityControllerTest {
     @Transactional
     public void activityAddedToDatabase()
     {
-        activity = this.createWhileJoining();
+        Activity activity = this.createWhileJoining();
         String activityName = activity.getName();
         Activity activityFromRepo = activityRepository.findByName(activityName);
         assertEquals(activity,activityFromRepo);
