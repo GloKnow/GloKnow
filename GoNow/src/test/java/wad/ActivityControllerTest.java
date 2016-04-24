@@ -50,6 +50,9 @@ public class ActivityControllerTest {
     @Autowired
     PersonRepository personRepository;
     
+    private Activity activity;
+    Person jackr;
+    
     public ActivityControllerTest() {
     }
     
@@ -64,6 +67,7 @@ public class ActivityControllerTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
+        jackr = personRepository.findByUsername("jackr");
     }
     
     @After
@@ -80,7 +84,6 @@ public class ActivityControllerTest {
     public void creatorCanJoin()
     {
         Activity football = activityRepository.findByName("Football");
-        Person jackr = personRepository.findByUsername("jackr");
         canJoin(jackr,football);
     }
     
@@ -101,6 +104,68 @@ public class ActivityControllerTest {
         Person jackb = personRepository.findByUsername("jackb");
         join(jackb,football);
         cannotJoin(jackb,football);
+    }
+    
+    @Test
+    @Transactional
+    public void createdActivityCreatorSetCorrectly()
+    {
+        activity = this.createWhileJoining();
+        assertEquals(jackr, activity.getCreator());
+    }
+    
+    @Test
+    @Transactional
+    public void canJoinWhenCreating()
+    {
+        activity = this.createWhileJoining();
+        //This currently fails - we have a list of attended activities, but we never add anything there!
+        //assertTrue(jackr.getAttendedActivities().contains(joinedCreatedActivity));
+        assertTrue(activity.getAttendees().contains(jackr));
+    }
+    
+    @Test
+    @Transactional
+    public void canNotJoinWhenCreating()
+    {
+        activity = this.createWithoutJoining();
+        assertFalse(activity.getAttendees().contains(jackr));
+    }
+    
+    @Test
+    @Transactional
+    public void activityAddedToDatabase()
+    {
+        activity = this.createWhileJoining();
+        String activityName = activity.getName();
+        Activity activityFromRepo = activityRepository.findByName(activityName);
+        assertEquals(activity,activityFromRepo);
+    }
+    
+    private Activity createWhileJoining()
+    {
+        String activityName = "joined";
+        boolean join = true;
+        Activity joinedActivity = create(activityName, jackr, join);
+        return joinedActivity;
+    }
+    
+    private Activity createWithoutJoining()
+    {
+        String activityName = "unjoined";
+        boolean join = false;
+        Activity unjoinedActivity = create(activityName, jackr, join);
+        return unjoinedActivity;
+    }
+
+    private Activity create(String activityName, Person person, boolean join) {
+        String addme = null;
+        if(join) addme = "Not null";
+        Activity activity = new Activity();
+        activity.setName(activityName);
+        when(personServiceMock.getAuthenticatedPerson()).thenReturn(person);
+        activityController.create(activity, addme);
+        return activity;
     }
     
     @Test

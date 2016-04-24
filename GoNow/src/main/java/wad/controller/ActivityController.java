@@ -91,6 +91,7 @@ public class ActivityController {
 
     /**
      * @param personService the personService to set
+     * For Mockito testing. Cannot seem to inject a mock personService otherwise.
      */
     public void setPersonService(PersonService personService) {
         this.personService = personService;
