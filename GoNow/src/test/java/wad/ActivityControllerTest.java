@@ -95,6 +95,16 @@ public class ActivityControllerTest {
     
     @Test
     @Transactional
+    public void cannotJoinTwice()
+    {
+        Activity football = activityRepository.findByName("Football");
+        Person jackb = personRepository.findByUsername("jackb");
+        join(jackb,football);
+        cannotJoin(jackb,football);
+    }
+    
+    @Test
+    @Transactional
     public void testTansactionGetsRolledBack()
     {
         Activity football = activityRepository.findByName("Football");
