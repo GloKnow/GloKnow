@@ -51,6 +51,7 @@
         </table>
 					        <p th:text="${act.description}"> Description</p></div>
 		        <form method="POST" th:action="@{/activities/{id}(id=${act.id})}"><input type="submit" class="button3" value="Join!" /></form>
+                        <form method="POST" th:action="@{/activities/remove/{id}(id=${act.id})}"><input type="submit" class="button3" value="Remove!" /></form>
 				<!--form method="POST" th:href="@{/activities/create}"><input type="submit" class="button3" value="Propose new activity" /></form-->
 
 
