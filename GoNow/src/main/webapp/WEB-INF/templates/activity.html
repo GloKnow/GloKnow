@@ -15,9 +15,11 @@
 </header>
 
 <nav class="topBar"> 
-  <a href="index.html" class="topbarItem">Activities</a>
+  <a href="index.html" class="topbarItem">Activites</a>
   <a href="profile.html" class="topbarItem">Profile</a>
   <a href="settings.html" class="topbarItem">Settings</a>
+  <a href="/jquery/" class="topbarItem">???</a>
+  <a href="/jquery/" class="topbarItem">???</a>
 </nav>
 
 <div class="activities">
@@ -27,11 +29,16 @@
     <div class="event">
 <div style="margin-left: 15px; margin-top: 15px;">
     <form action="action_page.php">
-        First Name:<br /><p th:text="${profile.firstname}">Placeholder</p><br />
-        Surname:<br /><p th:text="${profile.surname}">Placeholder</p><br />
-        Phone Number:<br /><p th:text="${profile.phone}">Placeholder</p><br />
-        Email Adress: <br /><p th:text="${profile.email}">Placeholder</p><br />
-        Birthday:<br /><p th:text="${profile.birthday}">Placeholder</p><br />
+        Name:<br /><p th:text="${activity.name}">Placeholder</p><br />
+        Time:<br /><p th:text="${activity.time}">Placeholder</p><br />
+        Location:<br /><p th:text="${activity.location}">Placeholder</p><br />
+        Creator:<br /><p th:text="${activity.creator.username}">Placeholder</p><br />
+        Description: <br /><p th:text="${activity.description}">Placeholder</p><br />
+        
+        Attendees:
+        <div th:each="attendee : ${activity.attendees}">
+            <p th:text="${attendee.username}"></p>
+        </div>
 
     </form>
 </div>

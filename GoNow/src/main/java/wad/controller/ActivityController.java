@@ -95,4 +95,11 @@ public class ActivityController {
         }
         return "redirect:/activities";
     }
+    
+    @RequestMapping(value = "/{activityId}", method = RequestMethod.GET)
+    public String showActivity(@PathVariable String activityId, Model model) {
+        Activity activity = activityRepository.findOne(activityId);
+        model.addAttribute("activity", activity);
+        return "activity";
+    }
 }
