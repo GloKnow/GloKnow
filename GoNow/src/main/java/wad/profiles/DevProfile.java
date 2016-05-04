@@ -74,18 +74,21 @@ public class DevProfile {
         Post post = new Post();
         post.setContent("Now they broke my toothbrush, I don't own anything.");
         post.setAuthor(jackR);
+        post.setActivity(footballAct);
         
         postRepository.save(post);
         
         Post post2 = new Post();
         post2.setContent(":(");
         post2.setAuthor(jackB);
+        post2.setActivity(marathonAct);
         
         postRepository.save(post2);
         
         Post post3 = new Post();
         post3.setContent("I'm not a vagrant. I'm a hobo. Big difference.");
         post3.setAuthor(jackR);
+        post3.setActivity(coffeeAct);
         
         postRepository.save(post3);
     }

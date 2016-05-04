@@ -11,6 +11,9 @@ public class Post extends AbstractResource {
 
     @ManyToOne
     private Person author;
+    
+    @ManyToOne
+    private Activity activity;
 
     @Column(name = "POST_DATE")
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
@@ -28,6 +31,14 @@ public class Post extends AbstractResource {
 
     public void setAuthor(Person author) {
         this.author = author;
+    }
+    
+    public Activity getActivity() {
+        return activity;
+    }
+    
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 
     public Date getDate() {

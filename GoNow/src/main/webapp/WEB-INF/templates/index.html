@@ -41,7 +41,7 @@
 
         <div class="group"><table border="1" style="width:100%">
             <tr>
-                <td><a th:text="${act.name}" href="#" th:href="@{/activities/{activityId} (activityId=${act.id})}">Name</a></td>
+                <td><a th:text="${act.name}" href="#" th:href="@{/activities/display/{activityId} (activityId=${act.id})}">Name</a></td>
                 <td th:text="${act.time}">Time</td>
                 <td th:text="${act.location}">Location</td>
                 <!--td th:text="${act.creator.username}">Creator</td-->

@@ -35,11 +35,24 @@
         Creator:<br /><p th:text="${activity.creator.username}">Placeholder</p><br />
         Description: <br /><p th:text="${activity.description}">Placeholder</p><br />
         
-        Attendees:
+        Attendees: <br />
         <div th:each="attendee : ${activity.attendees}">
             <p th:text="${attendee.username}"></p>
         </div>
+        <br />
+        
+        Comments: <br />
+        <div th:each="post : ${posts}">
+            <div>
+            <span th:text="${post.author.username}">Author</span><span>: </span><span th:text="${post.content}">Text</span>
+            </div>
+        </div>
+        <br />
 
+    </form>
+    <form method="POST" th:action="@{/posts/{activityId}(activityId=${activity.id})}">
+        <input type="text" name="content"></input>
+        <input type="submit" class="button3" value="Say it!"></input>
     </form>
 </div>
   

@@ -32,9 +32,6 @@ public class ActivityController {
     
     @RequestMapping(method = RequestMethod.GET)
     public String list(Model model) {
-        List<Post> posts = postRepository.findAll();
-        model.addAttribute("posts", posts);
-        
         List<Activity> activities = activityRepository.findAll();
         model.addAttribute("activities", activities);
         return "index";
@@ -101,6 +98,9 @@ public class ActivityController {
     public String showActivity(@PathVariable String activityId, Model model) {
         Activity activity = activityRepository.findOne(activityId);
         model.addAttribute("activity", activity);
+        
+        List<Post> posts = postRepository.findByActivity(activity);
+        model.addAttribute("posts", posts);
         return "activity";
     }
 
