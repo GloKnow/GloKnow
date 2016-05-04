@@ -60,6 +60,13 @@ public class ActivityController {
                 Person attendee = attendeelist.get(0);
                 this.leave(attendee,activity);
             }
+            List<Post> posts = postRepository.findByActivity(activity);
+            while(!posts.isEmpty())
+            {
+                Post post = posts.get(0);
+                post.setActivity(null);
+                posts.remove(post);
+            }
             activityRepository.delete(activity);
         }
         return "redirect:/activities";
@@ -72,9 +79,7 @@ public class ActivityController {
         Person person = personService.getAuthenticatedPerson();
         Activity activity = activityRepository.findOne(activityId);
         List<Person> attendeelist = activity.getAttendees();
-        if (attendeelist.contains(person)) {
-            leave(person, activity);
-        }
+        leave(person, activity);
         return "redirect:/activities";
     }
     
