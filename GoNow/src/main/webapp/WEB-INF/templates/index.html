@@ -27,35 +27,36 @@
   <input class="menu-btn" type="checkbox" id="menu-btn" />
   <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
   <ul class="menu">
-    <li><a href="#work">Main Page</a></li>
-    <li><a href="#about" th:href="@{/profiles/jackr}">Profile</a></li>
-    <li><a href="#careers" th:href="@{/settings/}">Settings</a></li>
+    <li><a href="#work" name="mainPage">Main Page</a></li>
+    <li><a href="#about" name="profile" th:href="@{/profiles/jackr}">Profile</a></li>
+    <li><a href="#careers" name="settings" th:href="@{/settings/}">Settings</a></li>
   </ul>
 </header>
 
 <div class="activities">
-    <a class="button3" href="#" th:href="@{/activities/create}">Propose new activity</a>
+    <a class="button3" href="#" name="create" th:href="@{/activities/create}">Propose new activity</a>
    
    <div class="activity" th:each="act : ${activities}">
         <!--button type="button" onclick="location.href='addevent.html';">Add me!</button-->
 
-        <div class="group"><table border="1" style="width:100%">
-            <tr>
-                <td><a th:text="${act.name}" href="#" th:href="@{/activities/display/{activityId} (activityId=${act.id})}">Name</a></td>
-                <td th:text="${act.time}">Time</td>
-                <td th:text="${act.location}">Location</td>
-                <!--td th:text="${act.creator.username}">Creator</td-->
-                <td><a th:text="${act.creator.username}" href="#" th:href="@{/profiles/{name} (name=${act.creator.username})}">Creator</a></td>
-                <td th:text="${act.attendeeCount}">Attendees</td>
-            </tr>
-        </table>
-					        <p th:text="${act.description}"> Description</p></div>
-		        <form method="POST" th:action="@{/activities/{id}(id=${act.id})}"><input type="submit" class="button3" value="Join!" /></form>
-                        <form method="POST" th:action="@{/activities/remove/{id}(id=${act.id})}"><input type="submit" class="button3" value="Remove!" /></form>
-				<!--form method="POST" th:href="@{/activities/create}"><input type="submit" class="button3" value="Propose new activity" /></form-->
+        <div class="group">
+            <table border="1" style="width:100%">
+                <tr>
+                    <td class="name"><a th:text="${act.name}" href="#" th:href="@{/activities/{activityId} (activityId=${act.id})}">Name</a></td>
+                    <td th:text="${act.time}" class="time">Time</td>
+                    <td th:text="${act.location}" class="location">Location</td>
+                    <!--td th:text="${act.creator.username}">Creator</td-->
+                    <td class="username"><a th:text="${act.creator.username}" href="#" th:href="@{/profiles/{name} (name=${act.creator.username})}">Creator</a></td>
+                    <td th:text="${act.attendeeCount}" class="attendeeCount">Attendees</td>
+                </tr>
+            </table>
+            <p th:text="${act.description}" class="description"> Description</p>
+        </div>
+	<form method="POST" th:action="@{/activities/{id}(id=${act.id})}"><input type="submit" class="button3" value="Join!" /></form>
+        <form method="POST" th:action="@{/activities/remove/{id}(id=${act.id})}"><input type="submit" class="button3" value="Remove!" /></form>
+	<!--form method="POST" th:href="@{/activities/create}"><input type="submit" class="button3" value="Propose new activity" /></form-->
 
-
-				</div>
+    </div>
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 </div>
