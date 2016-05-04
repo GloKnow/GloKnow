@@ -66,6 +66,18 @@ public class ActivityController {
         
     }
     
+    @Transactional
+    @RequestMapping(value = "/leave/{activityId}", method = RequestMethod.POST)
+    public String leaveActivity(@PathVariable String activityId) {
+        Person person = personService.getAuthenticatedPerson();
+        Activity activity = activityRepository.findOne(activityId);
+        List<Person> attendeelist = activity.getAttendees();
+        if (attendeelist.contains(person)) {
+            leave(person, activity);
+        }
+        return "redirect:/activities";
+    }
+    
     private void leave(Person person, Activity activity)
     {
         List<Person> attendeelist = activity.getAttendees();
