@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>GloKnow</title>
+<link href="../../static/css/styles.css" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+
+<body background="../../static/images/123.jpg"><div id="wrapper">
+<div class="content">
+
+<!-- <header>
+    <a href="index.html"><img alt="" src="../../static/images/globe_pic_logo2.png" id="gn_logo" /></a>
+    <div class="top_text">GoNow<br />Basic User</div>
+
+    <a href="#" onclick="document.getElementById('logout-form').submit()" class="logout">Log Out</a>
+    <form style="visibility: hidden" id="logout-form" method="post" action="#" th:action="@{/logout}">
+        <input type="submit" value="Logout" />
+    </form>
+	  <button class="hamburger">&#9776;</button>
+  <button class="cross">&#735;</button>
+
+</header> -->
+
+<header class="header" th:fragment="header">
+  <div class="logo"><a href="index.html" class="alink"><img class="img-circle" src="../../static/images/wms3.png"/></a></div><div class="logo-name"><a href="index.html" class="alink">Users Name</a></div>
+  <input class="menu-btn" type="checkbox" id="menu-btn" />
+  <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+  <ul class="menu">
+    <li><a href="#work" name="mainPage">Main Page</a></li>
+    <li><a href="#about" name="profile" th:href="@{/profiles/jackr}">Profile</a></li>
+    <li><a href="#careers" name="settings" th:href="@{/settings/}">Settings</a></li>
+  </ul>
+</header>
+
+<div class="activities">
+    <a class="button3" name="create" href="#" th:href="@{/activities/create}">Propose new activity</a>
+   
+   <div class="activity" th:each="act : ${activities}">
+        <!--button type="button" onclick="location.href='addevent.html';">Add me!</button-->
+
+        <div class="group"><table border="1" style="width:100%">
+            <tr>
+                <td class="name"><a th:text="${act.name}" href="#" th:href="@{/activities/{activityId} (activityId=${act.id})}">Name</a></td>
+                <td th:text="${act.time}" class="time">Time</td>
+                <td th:text="${act.location}" class="location">Location</td>
+                <!--td th:text="${act.creator.username}">Creator</td-->
+                <td class="username"><a th:text="${act.creator.username}" href="#" th:href="@{/profiles/{name} (name=${act.creator.username})}">Creator</a></td>
+                <td class="attendeeCount" th:text="${act.attendeeCount}">Attendees</td>
+            </tr>
+        </table>
+					        <p th:text="${act.description}"> Description</p></div>
+		        <form method="POST" th:action="@{/activities/{id}(id=${act.id})}"><input type="submit" class="button3" value="Join!" /></form>
+                        <form method="POST" th:action="@{/activities/remove/{id}(id=${act.id})}"><input type="submit" class="button3" value="Remove!" /></form>
+				<!--form method="POST" th:href="@{/activities/create}"><input type="submit" class="button3" value="Propose new activity" /></form-->
+
+
+				</div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+</div>
+</div>
+</div>
+</body>
+</html>
