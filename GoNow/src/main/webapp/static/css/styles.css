@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  font-family: 'Droid Serif', serif;
   background-color: #f4f4f4;
 }
 
@@ -12,25 +11,28 @@ a {
 /* header */
 
 .header {
-  background-color: #fff;
   box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
   position: fixed;
   width: 100%;
   max-width: 890px;
   z-index: 3;
+  background-color: #aee4d0;
+  /*background-image: url("../../static/images/bgimg3.png");*/
+
+}
+
+.alink {
+  text-decoration: none;
 }
 
 .header ul {
-
   margin: 0;
   padding: 0;
   list-style: none;
   overflow: hidden;
-  background-color: #fff;
 }
 
 .header li a {
-  border-right: 1px solid #f4f4f4;
   display: block;
   padding: 20px 20px;
   text-decoration: none;
@@ -42,11 +44,15 @@ a {
 }
 
 .header .logo {
-  padding: 10px;
   float: left;
-  font-size: 2em;
-  padding: 10px 20px;
+  vertical-align:middle;
+  padding: 10px 10px 0px 10px;
   text-decoration: none;
+}
+
+.header .logo-name {
+   float: left;
+   padding: 21px 15px 10px 2px;
 }
 
 /* menu */
@@ -193,8 +199,18 @@ a {
 }
 
 html {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
+
+/* Ob2 */
+
+.img-circle {
+    border: 1px solid #858585;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+}
+
 
 .button {
 	
@@ -293,12 +309,6 @@ border-radius: 10px;
 .group {
    background-color: #d9efe7;
    min-width: 290px;
-}
-
-header {
-
-   background-image: url("../../static/images/bgimg2.png");
-
 }
 
 .top_text { 
