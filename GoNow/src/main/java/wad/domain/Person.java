@@ -64,6 +64,11 @@ public class Person extends AbstractPersistable<Long> {
     public void setOwnedActivities(List<Activity> ownedActivities) {
         this.ownedActivities = ownedActivities;
     }
+    
+    public void addActivity(Activity activity)
+    {
+        this.ownedActivities.add(activity);
+    }
 
     public List<Activity> getAttendedActivities() {
         return attendedActivities;
