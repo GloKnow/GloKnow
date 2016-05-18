@@ -25,6 +25,21 @@
 <header class="header" th:replace="fragments/topmenu :: header">
 </header>
 
+<!--/*-->
+
+<header class="header" th:fragment="header">
+  <div class="logo"><a href="index.html" class="alink"><img class="img-circle" src="../../static/images/wms3.png"/></a></div><div class="logo-name"><a href="index.html" class="alink">Users Name</a></div>
+  <input class="menu-btn" type="checkbox" id="menu-btn" />
+  <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+  <ul class="menu">
+    <li><a href="#work" name="mainPage">Main Page</a></li>
+    <li><a href="#about" name="profile" th:href="@{/profiles/jackr}">Profile</a></li>
+    <li><a href="#careers" name="settings" th:href="@{/settings/}">Settings</a></li>
+  </ul>
+</header>
+
+<!--*/-->
+
 <div class="activities">
     <a class="button3" name="create" href="#" th:href="@{/activities/create}">Propose new activity</a>
    
@@ -33,7 +48,7 @@
 
         <div class="group"><table border="1" style="width:100%">
             <tr>
-                <td class="name"><a th:text="${act.name}" href="#" th:href="@{/activities/{activityId} (activityId=${act.id})}">Name</a></td>
+                <td class="name"><a th:text="${act.name}" href="#" th:href="@{/activities/display/{activityId} (activityId=${act.id})}">Name</a></td>
                 <td th:text="${act.time}" class="time">Time</td>
                 <td th:text="${act.location}" class="location">Location</td>
                 <!--td th:text="${act.creator.username}">Creator</td-->

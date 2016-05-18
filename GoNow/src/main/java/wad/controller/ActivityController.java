@@ -32,6 +32,12 @@ public class ActivityController {
     
     @RequestMapping(method = RequestMethod.GET)
     public String list(Model model) {
+        Person currUser = personService.getAuthenticatedPerson();
+        if (currUser != null) {
+            model.addAttribute("username", currUser.getUsername());
+        } else {
+            model.addAttribute("username", "Login");
+        }
         List<Activity> activities = activityRepository.findAll();
         model.addAttribute("activities", activities);
         return "index";
