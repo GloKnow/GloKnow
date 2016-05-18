@@ -60,6 +60,14 @@ public class Activities {
         
     }
     
+    public static void leaveActivity(WebDriver driver, String activityName)
+    {
+        WebElement activity = findActivity(driver, activityName);
+        WebElement leaveButton = activity.findElement(By.xpath(".//input[@value='Leave!']"));
+        leaveButton.click();
+        
+    }
+    
     public static void removeActivity(WebDriver driver, String activityName)
     {
         WebElement activity = findActivity(driver, activityName);

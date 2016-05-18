@@ -148,6 +148,8 @@ public class ActivitiesTest {
         assertEquals(0, Activities.getActivityAttendeeCount(driver, activityName));
         Activities.joinActivity(driver, activityName);
         assertEquals(1, Activities.getActivityAttendeeCount(driver, activityName));
+        Activities.leaveActivity(driver, activityName); //Cleanup
+        assertEquals(0, Activities.getActivityAttendeeCount(driver, activityName)); //Check if we actually left the activity
     }
     
     
@@ -184,6 +186,9 @@ public class ActivitiesTest {
         assertEquals(1,Activities.getActivityAttendeeCount(driver, activityName));
         Activities.joinActivity(driver, activityName);
         assertEquals(1,Activities.getActivityAttendeeCount(driver, activityName));
+        
+        Activities.leaveActivity(driver, activityName); //Cleanup
+        assertEquals(0, Activities.getActivityAttendeeCount(driver, activityName)); //Check if we actually left the activity
     }
 
 }
