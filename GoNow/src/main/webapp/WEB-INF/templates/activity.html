@@ -16,6 +16,7 @@
 
     <div class="event">
 <div style="margin-left: 15px; margin-top: 15px;">
+    <form th:if='${username} == ${activity.creator.username}' method="POST" th:action="@{/activities/remove/{id}(id=${activity.id})}"><input type="submit" class="button3" value="Remove" /></form>
     <form action="action_page.php">
         Name:<br /><p th:text="${activity.name}">Placeholder</p><br />
         Time:<br /><p th:text="${activity.time}">Placeholder</p><br />
