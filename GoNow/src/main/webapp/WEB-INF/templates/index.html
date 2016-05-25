@@ -59,8 +59,8 @@
         </table>
 					        <p th:text="${act.description}"> Description</p></div>
                         <form method="POST" th:action="@{/activities/leave/{id}(id=${act.id})}"><input type="submit" class="button3" value="Leave" /></form>
-                        <form method="POST" th:action="@{/activities/remove/{id}(id=${act.id})}"><input type="submit" class="button3" value="Remove" /></form>
-				<!--form method="POST" th:href="@{/activities/create}"><input type="submit" class="button3" value="Propose new activity" /></form-->
+                        <form th:if='${username} == ${act.creator.username}' method="POST" th:action="@{/activities/remove/{id}(id=${act.id})}"><input type="submit" class="button3" value="Remove" /></form>
+                        	<!--form method="POST" th:href="@{/activities/create}"><input type="submit" class="button3" value="Propose new activity" /></form-->
 
 
     </div>
@@ -81,8 +81,8 @@
         </table>
 					        <p th:text="${act.description}"> Description</p></div>
 		        <form method="POST" th:action="@{/activities/{id}(id=${act.id})}"><input type="submit" class="button3" value="Join!" /></form>
-                        <form method="POST" th:action="@{/activities/remove/{id}(id=${act.id})}"><input type="submit" class="button3" value="Remove" /></form>
-
+                        <form th:if='${username} == ${act.creator.username}' method="POST" th:action="@{/activities/remove/{id}(id=${act.id})}"><input type="submit" class="button3" value="Remove" /></form>
+                        
 				</div>
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
