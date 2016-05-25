@@ -23,14 +23,15 @@
 </header> -->
 
 <header class="header" th:fragment="header">
-  <div class="logo"><a href="index.html" class="alink"><img class="img-circle" src="../../static/images/wms3.png"/></a></div><div class="logo-name"><a href="index.html" class="alink" th:text="${username}">Users Name</a></div>
+  <div sec:authorize="isAuthenticated()"><div class="logo"><a href="index.html" th:href="@{/profiles/{name}(name=${username})}" class="alink"><img class="img-circle" src="../../static/images/wms3.png"/></a></div><div class="logo-name"><a href="index.html" class="alink" th:href="@{/profiles/{name}(name=${username})}" th:text="${username}">Users Name</a></div></div>
+  <div sec:authorize="!isAuthenticated()"><div class="logo"><a href="index.html" th:href="@{/login}" class="alink"><img class="img-circle" src="../../static/images/wms3.png"/></a></div><div class="logo-name"><a href="index.html" class="alink" th:href="@{/login}">Login</a></div></div>
   <input class="menu-btn" type="checkbox" id="menu-btn" />
   <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
   <ul class="menu">
-    <li><a href="#work" name="mainPage">Main Page</a></li>
-    <li><a href="#about" name="profile" th:href="@{/profiles/jackr}">Profile</a></li>
-    <li><a href="#careers" name="settings" th:href="@{/settings/}">Settings</a></li>
-    <li><a href="#" th:href="@{/logout}">Logout</a></li>
+    <li><a href="#work" name="mainPage" th:href="@{/activities}">Activities</a></li>
+    <li sec:authorize="isAuthenticated()"><a href="#about" name="profile" th:href="@{/profiles/{name}(name=${username})}">Profile</a></li>
+    <li sec:authorize="isAuthenticated()"><a href="#careers" name="settings" th:href="@{/settings/}">Settings</a></li>
+    <li sec:authorize="isAuthenticated()"><a href="#" th:href="@{/logout}">Logout</a></li>
   </ul>
 </header>
 

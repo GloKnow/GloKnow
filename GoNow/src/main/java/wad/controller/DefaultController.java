@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import wad.domain.Person;
 import wad.repository.FriendshipRequestRepository;
 import wad.repository.PersonRepository;
 import wad.repository.PostRepository;
@@ -47,6 +48,13 @@ public class DefaultController {
     
     @RequestMapping(value = "settings", method = RequestMethod.GET)
     public String viewSettings(Model model) {
+        Person currUser = personService.getAuthenticatedPerson();
+        if (currUser != null) {
+            model.addAttribute("username", currUser.getUsername());
+        } else {
+            model.addAttribute("username", "Login");
+        }
+        
         return "settings";
     }
     

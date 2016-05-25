@@ -119,6 +119,13 @@ public class ActivityController {
     
     @RequestMapping(value = "/display/{activityId}", method = RequestMethod.GET)
     public String showActivity(@PathVariable String activityId, Model model) {
+        Person currUser = personService.getAuthenticatedPerson();
+        if (currUser != null) {
+            model.addAttribute("username", currUser.getUsername());
+        } else {
+            model.addAttribute("username", "Login");
+        }
+        
         Activity activity = activityRepository.findOne(activityId);
         model.addAttribute("activity", activity);
         

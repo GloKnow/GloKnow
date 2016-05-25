@@ -19,6 +19,7 @@ import wad.domain.FileObject;
 import wad.domain.Person;
 import wad.repository.FileObjectRepository;
 import wad.repository.PersonRepository;
+import wad.service.PersonService;
 
 @Controller
 @RequestMapping("/profiles")
@@ -30,6 +31,9 @@ public class ProfileController {
     @Autowired
     private FileObjectRepository fileRepository;
     
+    @Autowired
+    private PersonService personService;
+    
     /*@RequestMapping(value = "/{personId}", method = RequestMethod.GET)
     public String viewProfile(@PathVariable Long personId, Model model) {
         model.addAttribute("profile", personRepository.findOne(personId));
@@ -38,6 +42,14 @@ public class ProfileController {
     
     @RequestMapping(value = "/{username}", method = RequestMethod.GET)
     public String viewProfile(@PathVariable String username, Model model) {
+        
+        Person currUser = personService.getAuthenticatedPerson();
+        if (currUser != null) {
+            model.addAttribute("username", currUser.getUsername());
+        } else {
+            model.addAttribute("username", "Login");
+        }
+        
         model.addAttribute("profile", personRepository.findByUsername(username));
         return "profile";
     }
