@@ -33,12 +33,18 @@ public class ActivityController {
     @RequestMapping(method = RequestMethod.GET)
     public String list(Model model) {
         Person currUser = personService.getAuthenticatedPerson();
+        List<Activity> attendedActivities = null;
         if (currUser != null) {
             model.addAttribute("username", currUser.getUsername());
-        } else {
-            model.addAttribute("username", "Login");
+            attendedActivities = currUser.getAttendedActivities();
         }
+        
         List<Activity> activities = activityRepository.findAll();
+        if (attendedActivities != null && !attendedActivities.isEmpty()) {
+            activities.removeAll(attendedActivities);
+            model.addAttribute("attendedActivities", attendedActivities);
+        }
+        
         model.addAttribute("activities", activities);
         return "index";
     }
