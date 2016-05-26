@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>GloKnow</title>
+<link href="../../static/css/styles.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body background="../../static/images/123.jpg"><div id="wrapper">
+<div class="content">
+
+<header class="header" th:replace="fragments/topmenu :: header">
+</header>
+
+<div class="activities">
+   
+   <div class="activity">
+
+    <div class="event">
+<div style="margin-left: 15px; margin-top: 15px;">
+    <form action="action_page.php">
+        First Name:<br /><p th:text="${profile.firstname}">Placeholder</p><br />
+        Surname:<br /><p th:text="${profile.surname}">Placeholder</p><br />
+        Phone Number:<br /><p th:text="${profile.phone}">Placeholder</p><br />
+        Email Adress: <br /><p th:text="${profile.email}">Placeholder</p><br />
+        Birthday:<br /><p th:text="${profile.birthday}">Placeholder</p><br />
+
+    </form>
+</div>
+  
+	
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>GloKnow</title>
+<link href="../../static/css/styles.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body background="../../static/images/123.jpg"><div id="wrapper">
+<div class="content">
+
+<header class="header" th:replace="fragments/topmenu :: header">
+</header>
+
+<div class="activities">
+   
+   <div class="activity">
+
+    <div class="event">
+       <form method="POST" th:action="@{/activities/create}">
+        Add name:<input type="text" name="name"></input><br/>
+        <span style="float: left;">Add description: </span><br/>
+        <input type="text" name="description"></input><br/>
+        <span style="float: left;">Add time: </span><br/>
+        <input type="text" name="time"></input><br/>
+        <span style="float: left;">Add location: </span><br/>
+        <input type="text" name="location"></input><br/>
+        <input type="submit" value="Create event!" />
+       </form>
+    </div>
+       
+       	<div class="event">
+	    Add picture:
+	    <form action="upload.php" method="post" enctype="multipart/form-data">
+                Select image to upload:
+                <input type="file" name="fileToUpload" id="fileToUpload" />
+                <input type="submit" value="Upload Image" name="submit" />
+            </form>
+        </div>
+	
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

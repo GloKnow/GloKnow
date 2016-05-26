@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>GloKnow</title>
+<link href="../../static/css/styles.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body background="../../static/images/123.jpg"><div id="wrapper">
+
+<header class="header" th:replace="fragments/topmenu :: header">
+</header>
+
+<div class="activities">
+   
+   <div class="activity">
+
+    <div class="event">
+<div style="margin-left: 15px; margin-top: 15px;">
+    <form th:if='${username} == ${activity.creator.username}' method="POST" th:action="@{/activities/remove/{id}(id=${activity.id})}"><input type="submit" class="button3" value="Remove" /></form>
+    <form action="action_page.php">
+        Name:<br /><p th:text="${activity.name}">Placeholder</p><br />
+        Time:<br /><p th:text="${activity.time}">Placeholder</p><br />
+        Location:<br /><p th:text="${activity.location}">Placeholder</p><br />
+        Creator:<br /><p th:text="${activity.creator.username}">Placeholder</p><br />
+        Description: <br /><p th:text="${activity.description}">Placeholder</p><br />
+        
+        Attendees: <br />
+        <div th:each="attendee : ${activity.attendees}">
+            <p th:text="${attendee.username}"></p>
+        </div>
+        <br />
+        
+        Comments: <br />
+        <div th:each="post : ${posts}">
+            <div>
+            <span th:text="${post.author.username}">Author</span><span>: </span><span th:text="${post.content}">Text</span>
+            </div>
+        </div>
+        <br />
+
+    </form>
+    <form method="POST" th:action="@{/posts/{activityId}(activityId=${activity.id})}">
+        <input type="text" name="content"></input>
+        <input type="submit" class="button3" value="Say it!"></input>
+    </form>
+</div>
+  
+	
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

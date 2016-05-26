@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <!-- Author: W3layouts
+    Author URL: http://w3layouts.com
+    License: Creative Commons Attribution 3.0 Unported
+    License URL: http://creativecommons.org/licenses/by/3.0/ -->
+    <head>
+        <title>cyan Flat ui kit Website Template | Home :: w3layouts</title>
+        <link href="../../static/css/bootstrap.css" th:href="@{/static/css/bootstrap.css}" rel="stylesheet" type="text/css" />
+        <script src="../../static/js/jquery.min.js" th:src="@{/static/js/jquery.min.js}"></script>
+        <link href="../../static/css/style.css" th:href="@{/static/css/style.css}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="../../static/fonts/css/font-awesome.min.css" th:href="@{/static/fonts/css/font-awesome.min.css}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    </head>
+    <body>
+        <!-- container -->
+        <div class="container">
+            <div class="top-header">
+                <!-- script-for-sidepanle-nav -->
+                <link type="text/css" rel="stylesheet" href="../../static/css/jquery.mmenu.all.css" th:href="@{/static/css/jquery.mmenu.all.css}" />
+                <script type="text/javascript" src="../../static/js/jquery.mmenu.js" th:src="@{/static/js/jquery.mmenu.js}"></script>
+                <script type="text/javascript">
+                    //	The menu on the left
+                    $(function () {
+                        $('nav#menu-left').mmenu();
+                    });
+                </script>
+                <!-- script-for-sidepanle-nav -->
+                <div id="page">
+                    <div id="header">
+                        <a href="#menu-left"> </a>
+                    </div>
+                    <nav id="menu-left">
+                        <ul>
+                            <li><a href="#">Welcome!</a></li>
+                            <li class="active"><a href="#">Works</a></li>
+                            <li><a href="#">Features</a></li>
+                            <li><a href="#">About</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="logo">
+                    <span>Friend requests </span>
+                </div>
+                <!-- usernotifications -->
+                <div class="usernotifications">
+                    <ul class="user-profile list-unstyled">
+                        <li><a href="#"><img src="../../static/images/user-pic.jpg" th:src="@{/static/images/user-pic.jpg}" title="admin" /></a>
+                            <ul class="sub list-unstyled">
+                                <li><a href="#">Profile</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">custom</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="logout list-unstyled">
+                        <li><a href="#" onclick="document.getElementById('logout-form').submit();"><span> </span></a></li>
+                    </ul>
+                    <form style="visibility: hidden" id ="logout-form" method="post" action="#" th:action="@{/logout}"><input type="submit" value="Logout"/></form>                    
+                </div>
+                <div class="clearfix"> </div>
+                <!-- usernotifications -->
+            </div>
+            <div class="clearfix"> </div>
+            <!-- content -->
+            <div class="content">
+                <div class="3-cols">
+                    <div class="col-1 col-md-3">
+
+                        <div th:each="request : ${friendshipRequests}">
+                            <div class="user-profile1 text-center">
+                                <img src="../../static/images/people.png" th:src="@{/static/images/people.png}" title="name" />
+                                <h3 th:text="${request.source.name}">Zach Dunes</h3>
+                                <p th:text="${request.source.slogan}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dapibus dui id libero auctor cursus. </p>
+                                <form method="POST" th:action="@{/friends}">
+                                    <input type="hidden" name="personId" th:value="${request.source.id}"/>
+                                    <input type="submit" class="p-btn" value="Ok! I like 'im!"/>
+                                </form>
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

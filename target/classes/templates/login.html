@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>GloKnow</title>
+<link href="../../static/css/styles.css" rel="stylesheet" type="text/css"></link>
+</head>
+<body background="../../static/images/helsinki_bg.jpg" style="width: 100%; height: 100%;">
+<div id="wrapper">
+
+<div class="frontpage">
+<div>
+<img src="../../static/images/gonow_logo.png" alt="Gonow" id="gonowlogo"></img>
+</div>
+
+    <hr></hr>
+
+
+    <form th:action="@{/authenticate}" method="POST">
+	<div class="text-boxs">
+            <span class="text-box">
+                <label class="s-user"></label>
+                <input type="text" name="username" placeholder="Username" />
+                <div class="clearfix"></div>
+            </span>
+            <span class="text-box">
+                <label class="s-lock"> </label>
+                <input type="password" name="password" placeholder="password" /> 
+                <div class="clearfix"> </div>
+            </span>
+        </div>
+        <input type="submit" name="submit" value="sign in" />
+	</form>
+	<a href="/forgot.html">forgot your password?</a>
+
+
+<div class="registerbutton">
+<a class="button" name="register" href="/registration.html" th:href="@{/signup}" >Register</a>
+</div>
+
+        <hr></hr>
+
+</div>
+</div>
+</body>
+</html>
