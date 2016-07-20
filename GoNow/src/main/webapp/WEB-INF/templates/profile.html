@@ -11,27 +11,46 @@
 <header class="header" th:replace="fragments/topmenu :: header">
 </header>
 
-<div class="activities">
-   
-   <div class="activity">
+<!--/*-->
 
-    <div class="event">
-<div style="margin-left: 15px; margin-top: 15px;">
-    <form action="action_page.php">
-        First Name:<br /><p th:text="${profile.firstname}">Placeholder</p><br />
-        Surname:<br /><p th:text="${profile.surname}">Placeholder</p><br />
-        Phone Number:<br /><p th:text="${profile.phone}">Placeholder</p><br />
-        Email Adress: <br /><p th:text="${profile.email}">Placeholder</p><br />
-        Birthday:<br /><p th:text="${profile.birthday}">Placeholder</p><br />
+<header class="header" th:fragment="header">
+  <div class="logo"><a href="index.html" class="alink"><img class="img-circle" src="../../static/images/wms3.png"/></a></div><div class="logo-name"><a href="index.html" class="alink">Users Name</a></div>
+  <input class="menu-btn" type="checkbox" id="menu-btn" />
+  <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+  <ul class="menu">
+    <li><a href="#work" name="mainPage">Main Page</a></li>
+    <li><a href="#about" name="profile" th:href="@{/profiles/jackr}">Profile</a></li>
+    <li><a href="#careers" name="settings" th:href="@{/settings/}">Settings</a></li>
+  </ul>
+</header>
 
-    </form>
+<!--*/-->
+
+
+<div class="rcontent">
+
+
+<div class="rcolumn"><img width="180" height="180" src="../../static/images/ppic.png"><br>
+	Users Name</div>
+	
+	<div class="rcolumn">
+  <form action="action_page.php">
+        First Name:<p th:text="${profile.firstname}">Placeholder</p><br />
+        Surname:<p th:text="${profile.surname}">Placeholder</p><br />
+        Phone:<p th:text="${profile.phone}">Placeholder</p><br />
+        Email: <p th:text="${profile.email}">Placeholder</p><br />
+        Birthday:<p th:text="${profile.birthday}">Placeholder</p><br />
+		-- SOCIAL MEDIA ICONS (ETC) --
+
+</div>
+
 </div>
   
 	
 </div>
 </div>
-</div>
-</div>
-</div>
+
+
+
 </body>
 </html>

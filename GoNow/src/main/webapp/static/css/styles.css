@@ -14,7 +14,7 @@ a {
   box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
   position: fixed;
   width: 100%;
-  max-width: 890px;
+
   z-index: 3;
   background-color: #aee4d0;
   /*background-image: url("../../static/images/bgimg3.png");*/
@@ -61,7 +61,7 @@ a {
 
   clear: both;
   max-height: 0;
-  max-width: 785px;
+
   transition: max-height .2s ease-out;
 }
 
@@ -148,7 +148,7 @@ a {
     max-height: none;
   }
   .header .menu-icon {
-    display: none;
+    
   }
 }
 
@@ -294,6 +294,12 @@ border-radius: 10px;
    padding-bottom: 20px;
 }
 
+.rcontent {
+  padding-top: 70px;
+  background-color: white;
+  height: 500px;
+}
+
 .activity {
    margin-bottom: 15px;
 }
@@ -304,6 +310,10 @@ border-radius: 10px;
    background-color: #d9efe7;
    -moz-border-radius: 15px;
    border-radius: 15px;
+}
+
+.rd {
+
 }
 
 .group {
@@ -427,13 +437,21 @@ padding: 30px;
 
 .content {
   margin: 0 auto;
-  max-width: 890px;
   background-color: white;
 }
+
+/*   max-width: 890px; */
 
 
 .registerbutton {
   -moz-border-radius: 15px;
    border-radius: 15px;
   padding-top: 5px;
+}
+
+.rcolumn {
+
+  float: left;
+  width: 180px;
+  padding-left: 20px;
 }
